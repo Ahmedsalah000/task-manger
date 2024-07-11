@@ -1,10 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import  dbConnection  from './config/database.js';
-import  taskRoutes from './routes/taskRoutes.js';
-import  categoryRoutes from './routes/categoryRoutes.js';
-// import  authRoutes from './routes/authRoutes.js';
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
 
 
@@ -23,10 +20,6 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
-
-// app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/categories', categoryRoutes);
-app.use('/api/v1/tasks', taskRoutes);
 
 app.listen(3000,()=>{
     console.log('Listening on port 3000');
