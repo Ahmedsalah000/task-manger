@@ -21,7 +21,13 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send(` hllo this all api \n
+        https://task-manger-five.vercel.app/api/v1/categories
+
+        https://task-manger-five.vercel.app/api/v1/tasks
+        
+
+        `);
 });
 
 // app.use('/api/v1/auth', authRoutes);
