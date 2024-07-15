@@ -1,4 +1,4 @@
-import mongoose  from 'mongoose';
+import mongoose from 'mongoose';
 
 const TaskSchema = new mongoose.Schema({
     title: String,
@@ -7,8 +7,21 @@ const TaskSchema = new mongoose.Schema({
     listItems: [String],
     isShared: Boolean,
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-});
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        // required: [true,'taske must belong to a user'],
+    },
+
+},
+    { timestamps: true });
+
+TaskSchema.pre(/^find/,function(next){
+    this.populate({
+        path:'user',select:('username')
+    })
+    next()
+})
 
 const Task = mongoose.model('Task', TaskSchema);
 
